@@ -1,0 +1,15 @@
+env:
+  secure: GE1ZkV8hjkMoxwOvb7bwv04w3BtqpQ1ke535fpfrTsFa93hxuIrEsYMVDR6GxxXr3U8L5OaLL99mw9eElEsKzJJTN60yCBWw/tB3O0WBpGcHbihdug0tlFmu/dtS7ssNfpYk8yaFiJ6z6YG9GrCVmUUPqYML/6WyFeqKjc4raLe5mB0GbTAglRX9sSH0Y3wuNLM3pG3wRWy+xsvwlDyI2M1LwfIq/8vxDlYftvGlCaW11VNJbanxj5MhmR6ZLSLPXjX8JKmKtCrOqqkz3dmSg+gFOfwJkuslml+c9ukw8nDuN9uYdFj2Gf7PiL6GymocarHlUudP4FG6SK/XKxKlqHxE/C4zrxmOCFQeNslyx5B1dL2yxs5+p80MLe2ZU0gl/E9ScRjDya1b57Yl9Pz+9Kidzt07lkofWgudQOJL4J1iA6oIQj/Qxq5QB3KR6JLykokvMwIMvWPpX57eK/rfVcCYDXR9vJMRIHSluE9QrTA2mgjD2fjL0kxMQ7OCBeV5tl7NvDf7lLhV9tL3exEzgzisAEdxiQazT1X324bO6LFgXGe6VNHWgQhfqdXA66bnPCtOksyD+iOIz8StGHvhjy7ziSE3ug62EbqTp9qJP51bzJab+B4S4QuxqrMMY5ZDCLomA614YJ08eaL5ZGCuk8pTkHBRQ+WXv/LLgZLPdNI=
+language: ruby
+rvm:
+  - 2.2.5
+before_install: |
+  gem install bundler -v 1.13.7 &&\
+  curl -O https://bin.equinox.io/c/jewmwFCp7w9/convox-stable-linux-amd64.tgz &&\
+  tar zxvf convox-stable-linux-amd64.tgz -C /tmp
+addons:
+  code_climate:
+    repo_token: 718fc08daf86b41dd57a4098b37d3e0eaeb7c2f52aeec26e4241a2386a0d6c31
+after_success:
+  - /tmp/convox deploy --app toy-robot-api --rack convox
+  - bundle exec codeclimate-test-reporter
