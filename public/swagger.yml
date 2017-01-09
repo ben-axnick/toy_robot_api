@@ -1,0 +1,65 @@
+swagger: '2.0'
+info:
+  title: Toy Robot API
+  description: Stateless API for processing "Toy Robot" commands
+  version: "1.0.0"
+host: toy-robot-api.pickaxe.me
+schemes:
+  - http
+basePath: /
+produces:
+  - application/json
+paths:
+  /command:
+    get:
+      summary: Execute a command against a robot
+      description: |
+        Pass in a robot and the command to be executed against it. The endpoint will respond with the updated robot state along with any output associated with the command.
+      parameters:
+        - name: command
+          in: query
+          type: string
+          description: A command processed and then executed against the robot.
+        - name: robot[x]
+          in: query
+          type: integer
+          description: The robot's X location
+        - name: robot[y]
+          in: query
+          type: integer
+          description: The robot's Y location
+        - name: robot[f]
+          in: query
+          type: string
+          description: A compass direction
+          enum: ["east", "north", "west", "south"]
+      responses:
+        200:
+          description: The new world state after running the command
+          schema:
+            "$ref": "#/definitions/Result"
+          
+
+definitions:
+  Result:
+    type: object
+    properties:
+      robot:
+        "$ref": "#/definitions/Robot"
+      output:
+        type: string
+        description: "Any output emitted as a result of running the command"
+  Robot:
+    type: object
+    properties:
+      x:
+        type: integer
+        description: The robot's X location
+        format: int32
+      y:
+        type: integer
+        description: The robot's Y location
+        format: int32
+      f:
+        type: string
+        description: The robot's current facing expressed as a compass direction

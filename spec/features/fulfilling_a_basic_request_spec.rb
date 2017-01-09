@@ -1,5 +1,6 @@
 require "spec_helper"
 require "rack/test"
+require "yaml"
 
 describe "fulfilling a basic request" do
   let(:browser) { Rack::Test::Session.new(Rack::MockSession.new(App)) }
@@ -34,5 +35,13 @@ describe "fulfilling a basic request" do
       expect(response.status).to eq(404)
       expect(response.body).to be_empty
     end
+  end
+
+  it "publishes the swagger.yml file" do
+    response = browser.get("/assets/swagger.yml")
+    file = YAML.load(response.body)
+
+    expect(file).to_not eq(false)
+    expect(file["swagger"]).to_not be_nil
   end
 end

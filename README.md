@@ -10,6 +10,10 @@ Heroku.
 [![Code Climate](https://codeclimate.com/github/bentheax/toy_robot_api/badges/gpa.svg)](https://codeclimate.com/github/bentheax/toy_robot_api)
 [![Test Coverage](https://codeclimate.com/github/bentheax/toy_robot_api/badges/coverage.svg)](https://codeclimate.com/github/bentheax/toy_robot_api/coverage)
 
+## API Docs
+
+https://app.swaggerhub.com/api/bentheax/toy-robot-api
+
 ## Running
 
 ```

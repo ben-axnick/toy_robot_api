@@ -50,7 +50,10 @@ end
 
 class App < Sinatra::Base
   register Sinatra::CrossOrigin
-  enable :cross_origin
+
+  configure do
+    enable :cross_origin
+  end
 
   get "/command" do
     content_type :json
@@ -64,6 +67,21 @@ class App < Sinatra::Base
     result = SerialResult.new(command.perform(robot))
 
     result.to_h.to_json
+  end
+
+  # Assets should generally be fingerprinted, cached, and served via CDN.
+  # Making an exception for the sake of saving time
+  get "/assets/swagger.yml" do
+    content_type "text/plain;charset=utf8"
+
+    File.read(File.join("public", "swagger.yml"))
+  end
+
+  options "*" do
+    response.headers["Allow"] = "HEAD,GET,PUT,POST,DELETE,OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept"
+
+    200
   end
 
   error Sinatra::NotFound do
