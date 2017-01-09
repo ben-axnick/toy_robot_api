@@ -26,4 +26,13 @@ describe "fulfilling a basic request" do
       output: "0, 0, SOUTH"
     )
   end
+
+  it "responds to unknown routes with a minimal response" do
+    response = browser.get("/")
+
+    aggregate_failures do
+      expect(response.status).to eq(404)
+      expect(response.body).to be_empty
+    end
+  end
 end

@@ -61,4 +61,10 @@ class App < Sinatra::Base
 
     result.to_h.to_json
   end
+
+  error Sinatra::NotFound do
+    content_type :json
+
+    [404, ""]
+  end
 end
