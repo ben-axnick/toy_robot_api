@@ -71,10 +71,10 @@ class App < Sinatra::Base
 
   # Assets should generally be fingerprinted, cached, and served via CDN.
   # Making an exception for the sake of saving time
-  get "/assets/swagger.yml" do
+  get "/assets/swagger.yaml" do
     content_type "text/plain;charset=utf8"
 
-    File.read(File.join("public", "swagger.yml"))
+    File.read(File.join("public", "swagger.yaml"))
   end
 
   options "*" do

@@ -38,7 +38,7 @@ describe "fulfilling a basic request" do
   end
 
   it "publishes the swagger.yml file" do
-    response = browser.get("/assets/swagger.yml")
+    response = browser.get("/assets/swagger.yaml")
     file = YAML.load(response.body)
 
     expect(file).to_not eq(false)
