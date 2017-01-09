@@ -1,5 +1,6 @@
-require "sinatra/base"
 require "json"
+require "sinatra/base"
+require "sinatra/cross_origin"
 require "toy_robot"
 
 class RobotParser
@@ -48,6 +49,9 @@ class SerialResult < SimpleDelegator
 end
 
 class App < Sinatra::Base
+  register Sinatra::CrossOrigin
+  enable :cross_origin
+
   get "/command" do
     content_type :json
 

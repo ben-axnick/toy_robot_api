@@ -1,4 +1,4 @@
-FROM ruby:2.4.0-alpine
+FROM ruby:2.2.5-alpine
 
 RUN apk add --no-cache git g++ musl-dev make
 
