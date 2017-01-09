@@ -12,7 +12,10 @@ Heroku.
 
 ## API Docs
 
-https://app.swaggerhub.com/api/bentheax/toy-robot-api
+Provided as a Swagger
+[template file](https://toy-robot-api.pickaxe.me/assets/swagger.yaml).
+Website provided via
+[Swagger UI](http://petstore.swagger.io/?url=https://toy-robot-api.pickaxe.me/assets/swagger.yaml#/default)
 
 ## Running
 
