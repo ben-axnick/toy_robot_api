@@ -13,3 +13,5 @@ addons:
 after_success:
   - /tmp/convox deploy --app toy-robot-api --rack convox
   - bundle exec codeclimate-test-reporter
+notifications:
+  email: false
