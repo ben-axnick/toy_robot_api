@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/bentheax/toy_robot.git
-  revision: 62138e07213f67b08d0e78e038cd0cde36cfc47c
+  revision: 34d1793679358b30929facc93411ccf18da11975
   specs:
-    toy_robot (0.1.0)
+    toy_robot (1.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -67,4 +67,4 @@ DEPENDENCIES
   toy_robot!
 
 BUNDLED WITH
-   1.13.7
+   1.14.4
