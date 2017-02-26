@@ -1,5 +1,7 @@
 env:
   secure: GE1ZkV8hjkMoxwOvb7bwv04w3BtqpQ1ke535fpfrTsFa93hxuIrEsYMVDR6GxxXr3U8L5OaLL99mw9eElEsKzJJTN60yCBWw/tB3O0WBpGcHbihdug0tlFmu/dtS7ssNfpYk8yaFiJ6z6YG9GrCVmUUPqYML/6WyFeqKjc4raLe5mB0GbTAglRX9sSH0Y3wuNLM3pG3wRWy+xsvwlDyI2M1LwfIq/8vxDlYftvGlCaW11VNJbanxj5MhmR6ZLSLPXjX8JKmKtCrOqqkz3dmSg+gFOfwJkuslml+c9ukw8nDuN9uYdFj2Gf7PiL6GymocarHlUudP4FG6SK/XKxKlqHxE/C4zrxmOCFQeNslyx5B1dL2yxs5+p80MLe2ZU0gl/E9ScRjDya1b57Yl9Pz+9Kidzt07lkofWgudQOJL4J1iA6oIQj/Qxq5QB3KR6JLykokvMwIMvWPpX57eK/rfVcCYDXR9vJMRIHSluE9QrTA2mgjD2fjL0kxMQ7OCBeV5tl7NvDf7lLhV9tL3exEzgzisAEdxiQazT1X324bO6LFgXGe6VNHWgQhfqdXA66bnPCtOksyD+iOIz8StGHvhjy7ziSE3ug62EbqTp9qJP51bzJab+B4S4QuxqrMMY5ZDCLomA614YJ08eaL5ZGCuk8pTkHBRQ+WXv/LLgZLPdNI=
+  global:
+    secure: PDsk3BaVO6jhVnH9yrxTEWDfUb1CHI0CRg0bUMJx50otKjOUDxPHtwgUr1Je883iNUMs5/IH+pKFetMMKeDZ8GKETVWNSgvKJwkJRD7Sz0AC3unXy2eoFsK9m/gmrK41wC1TNFwLScPb3WEMdpls5CBa/lyXzL1RLQcTrUOS9bWrb09r7qYa0/QnMmLxojcSA2vygXfw6TXcH7y4I6H+Wx+CO0oa5n9YFBIb4XddlxyN+RhkJP76qrbSfASZULU68BzCOROvceqUuo8nyQBSSbu19+FGxSWYgnk7Ms/+kqVrEOtdiPUHW/yXmWDtrsDlyz2Dlzao0JW0nGeqD0WZSUozhx6LKFtPvqs6UcqnzeEZy2t+ZfhsmOIISjHEggXytKnGyayAYZKPg1s8OW/13war2TeMl4JLXo+UqTkhVvW8CalrTLYTVCFlBGLK/SWBYRgPGggxJGej+KHphFw6Y7pQAqs3kXQXmWNTO51tIsya6yb+Mr/7GqDZn1Ig/RjKyorlc3owBVzhbqH7lmx53mj+XGB18D7p+AvLnJnIzvIXuRir9rbF0MPY4dKqPabYua6jwjYqsjo72P6DH0OOLfqAqWoV5gKqpHo+18lsDYv1S/Vx2erZ8DLZJ89FK5+WDgHTpEgt8zbDHARiHXe9NBN9biQVf/Qts+LS/d6OtB4=
 language: ruby
 rvm:
   - 2.2.5
@@ -11,7 +13,7 @@ addons:
   code_climate:
     repo_token: 718fc08daf86b41dd57a4098b37d3e0eaeb7c2f52aeec26e4241a2386a0d6c31
 after_success:
-  - /tmp/convox deploy --app toy-robot-api --rack convox
   - bundle exec codeclimate-test-reporter
+  - "/tmp/convox deploy --app toy-robot-api --rack convox --wait"
 notifications:
   email: false
